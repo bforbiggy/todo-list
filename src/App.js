@@ -18,9 +18,9 @@ class App extends React.Component {
 
   render() {
     // Create renderable html version of todo list
-    var htmlList = this.state.todoList.map((todo, index) =>
+    var htmlList = this.state.todoList.map((todoItem, index) =>
       <li key={index}>
-        {todo}
+        {todoItem}
         <button onClick={() => { this.removeItem(index) }}>X</button>
       </li>
     );
