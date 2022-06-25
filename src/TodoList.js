@@ -1,5 +1,20 @@
 import React from 'react';
 import ItemAdder from './ItemAdder.js';
+import styled from 'styled-components'
+
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0.5em 0.5em;
+  padding: 0.4em 1em;
+`;
+
+const Li = styled.li`
+    list-style-type: '- ';
+    text-align: left;
+`;
 
 class TodoList extends React.Component {
     constructor(props) {
@@ -17,15 +32,16 @@ class TodoList extends React.Component {
     render() {
         // Create renderable html version of todo list
         var htmlList = this.state.todoList.map((todoItem, index) =>
-            <li key={index}>
+            <Li key={index}>
+
                 {todoItem}
-                <button onClick={() => { this.removeItem(index) }}>X</button>
-            </li>
+                <Button onClick={() => { this.removeItem(index) }}>X</Button>
+            </Li>
         );
 
         return (
             <div className="todoList">
-                <ul>{htmlList}</ul>
+                {htmlList}
                 <ItemAdder parentState={this.state} stateSetter={this.setState.bind(this)} />
             </div>
         );
