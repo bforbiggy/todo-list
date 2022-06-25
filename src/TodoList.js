@@ -12,8 +12,13 @@ const Button = styled.button`
 `;
 
 const Li = styled.li`
-    list-style-type: '- ';
-    text-align: left;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: justify;
+    color: #ddd;
+    margin: 30px;
+    box-shadow: rgba(17, 28, 41, 0.4) 0px 0px 0px 2px, rgba(17, 28, 41, 0.65) 0px 4px 6px -1px, rgba(32, 34, 35, 0.08) 0px 1px 0px inset;
 `;
 
 class TodoList extends React.Component {
@@ -33,7 +38,7 @@ class TodoList extends React.Component {
         // Create renderable html version of todo list
         var htmlList = this.state.todoList.map((todoItem, index) =>
             <Li key={index}>
-
+                <input type="checkbox" value="false" />
                 {todoItem}
                 <Button onClick={() => { this.removeItem(index) }}>X</Button>
             </Li>
