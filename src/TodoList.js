@@ -2,7 +2,7 @@ import React from 'react';
 import ItemAdder from './ItemAdder.js';
 import styled from 'styled-components'
 
-const Button = styled.button`
+const DeleteButton = styled.button`
   background: transparent;
   border-radius: 3px;
   border: 2px solid palevioletred;
@@ -11,14 +11,25 @@ const Button = styled.button`
   padding: 0.4em 1em;
 `;
 
-const Li = styled.li`
+const ListedItem = styled.li`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     text-align: justify;
-    color: #ddd;
     margin: 30px;
     box-shadow: rgba(17, 28, 41, 0.4) 0px 0px 0px 2px, rgba(17, 28, 41, 0.65) 0px 4px 6px -1px, rgba(32, 34, 35, 0.08) 0px 1px 0px inset;
+`;
+
+const CheckBox = styled.input`
+  background-color: #fff;
+  margin: 0.1;
+  font: inherit;
+  color: currentColor;
+  width: 0.8em;
+  height: 0.8em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
 `;
 
 class TodoList extends React.Component {
@@ -37,11 +48,11 @@ class TodoList extends React.Component {
     render() {
         // Create renderable html version of todo list
         var htmlList = this.state.todoList.map((todoItem, index) =>
-            <Li key={index}>
-                <input type="checkbox" value="false" />
+            <ListedItem key={index}>
+                <CheckBox type="checkbox" value="false" />
                 {todoItem}
-                <Button onClick={() => { this.removeItem(index) }}>X</Button>
-            </Li>
+                <DeleteButton onClick={() => { this.removeItem(index) }}>X</DeleteButton>
+            </ListedItem>
         );
 
         return (
